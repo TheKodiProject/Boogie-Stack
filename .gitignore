@@ -1,0 +1,15 @@
+node_modules
+
+.cache
+.env
+.vercel
+.output
+
+# builds
+/build/
+/public/build
+/api/index.js
+/api/index.js.map
+
+# prisma
+prisma/prisma

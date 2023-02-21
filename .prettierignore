@@ -1,0 +1,15 @@
+.cache
+.env
+.vercel
+.output
+
+/build/
+/public/build
+/api/index.js
+/api/index.js.map
+
+# Ignore all HTML files:
+*.html
+
+# prisma
+prisma/prisma
