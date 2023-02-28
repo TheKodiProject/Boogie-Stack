@@ -1,6 +1,5 @@
-import { useRef, ReactNode } from 'react'
-import { FocusRing } from '@react-aria/focus'
-import { useButton, AriaButtonProps } from '@react-aria/button'
+import { useRef, ReactNode, Fragment } from 'react'
+import { useButton } from '@react-aria/button'
 import { motion, useAnimation } from 'framer-motion'
 
 export interface IBoogieButtonProps {
@@ -35,10 +34,11 @@ export function BoogieButton(props: IBoogieButtonProps) {
   )
 
   return (
-    <FocusRing focusRingClass="ring ring-offset-2 ring-offset-black">
+    <Fragment>
       {/* @ts-ignore */}
       <motion.button
         variants={variants}
+        // TODO: make border radius dynamic within design system/tailwind config
         whileTap={{ scale: 1.2, borderRadius: '6px' }}
         className="bg-pink-400 rounded-lg p-4 shadow font-mono font-semibold"
         {...buttonProps}
@@ -47,6 +47,6 @@ export function BoogieButton(props: IBoogieButtonProps) {
       >
         {props.children}
       </motion.button>
-    </FocusRing>
+    </Fragment>
   )
 }
