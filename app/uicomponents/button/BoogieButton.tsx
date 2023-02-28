@@ -15,21 +15,20 @@ export function BoogieButton(props: IBoogieButtonProps) {
   let { buttonProps } = useButton(
     {
       onPressStart: () => {
-        controls.stop()
-        controls.set({ background: 'purple' })
+        controls.start({
+          transition: {
+            type: 'spring',
+            stiffness: 100,
+            damping: 10,
+            mass: 0.25,
+          },
+        })
       },
       onPressEnd: () => {
-        controls.start({
-          background: 'pink',
-          transition: { duration: 0.4 },
-        })
+        // implement on pressEnd
       },
       onPress: () => {
         props.onClick()
-        controls.start({
-          background: [null, 'pink'],
-          transition: { duration: 0.4 },
-        })
       },
     },
     ref
@@ -40,7 +39,7 @@ export function BoogieButton(props: IBoogieButtonProps) {
       {/* @ts-ignore */}
       <motion.button
         variants={variants}
-        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 1.2, borderRadius: '6px' }}
         className="bg-pink-400 rounded-lg p-4 shadow font-mono font-semibold"
         {...buttonProps}
         ref={ref}
